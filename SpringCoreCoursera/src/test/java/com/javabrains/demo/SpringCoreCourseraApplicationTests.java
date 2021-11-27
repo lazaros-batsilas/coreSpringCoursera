@@ -22,7 +22,7 @@ class SpringCoreCourseraApplicationTests {
 
 	@Test
 	void contextLoads() {
-		service = (UserService) context.getBean("userService");
+		service = context.getBean("userService", UserService.class);
 		assertNotNull(service);
 	}
 
