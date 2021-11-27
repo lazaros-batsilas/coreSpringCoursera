@@ -1,26 +1,28 @@
 package com.javabrains.demo;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import javax.inject.Inject;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.javabrains.demo.config.ApplicationConfig;
 import com.javabrains.demo.service.UserService;
 
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes=ApplicationConfig.class)
 @SpringBootTest
 class SpringCoreCourseraApplicationTests {
 	
-	AnnotationConfigApplicationContext context;
+	@Inject
 	UserService service;
-	
-	@BeforeEach
-	void setup() {
-		context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-		service = context.getBean("userService", UserService.class);
-	}
 
 	@Test
 	void contextLoads() {
