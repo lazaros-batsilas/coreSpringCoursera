@@ -3,6 +3,8 @@ package com.javabrains.demo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -34,6 +36,12 @@ class SpringCoreCourseraApplicationTests {
 	@Test
 	void getAllUsers() {
 		service.getAllUsers().stream().forEach(user->System.out.println(user.getName()));
+	}
+	
+	@Test
+	void getUsersForDepartment() {
+		List<User> users = service.getUsersForDepartment();
+		assertEquals(users.size(), 1);
 	}
 
 }

@@ -1,10 +1,8 @@
 package com.javabrains.demo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Value;
 
@@ -40,5 +38,13 @@ public class UserServiceImpl implements UserService{
 		this.numOfUsers = numOfUsers;
 	}
 	
+//	This doesn't work!
+//	@Value("#{userDao.getUsers.?[dept.equals('${department}')]}")
 	
+	@Value("#{userDao.getUsers.?[dept.equals('English Literature')]}")
+	private List<User> usersForDepartment = new ArrayList<User>();
+	
+	public List<User> getUsersForDepartment(){
+		return usersForDepartment;
+	}
 }

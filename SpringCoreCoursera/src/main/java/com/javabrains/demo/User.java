@@ -4,7 +4,7 @@ public class User {
 
 	private String name;
 	private String surname;
-	private String course;
+	private String dept;
 	private Double grade;
 	public String getName() {
 		return name;
@@ -18,11 +18,11 @@ public class User {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	public String getCourse() {
-		return course;
+	public String getDept() {
+		return dept;
 	}
-	public void setCourse(String course) {
-		this.course = course;
+	public void setDept(String dept) {
+		this.dept = dept;
 	}
 	public Double getGrade() {
 		return grade;
@@ -30,13 +30,12 @@ public class User {
 	public void setGrade(Double grade) {
 		this.grade = grade;
 	}
-	public User(String name, String surname, String course, Double grade) {
+	public User(String name, String surname, String dept, Double grade) {
 		super();
 		this.name = name;
 		this.surname = surname;
-		this.course = course;
+		this.dept = dept;
 		this.grade = grade;
 	}
-	
 	
 }
