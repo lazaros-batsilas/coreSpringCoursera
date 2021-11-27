@@ -3,8 +3,11 @@ package com.javabrains.demo.dao;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Named;
+
 import com.javabrains.demo.User;
 
+@Named("dao")
 public class UserDaoImpl implements UserDao {
 	
 	List<User> users = Arrays.asList(

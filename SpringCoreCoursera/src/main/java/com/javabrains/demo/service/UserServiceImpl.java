@@ -3,12 +3,20 @@ package com.javabrains.demo.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Value;
+
 import com.javabrains.demo.User;
 import com.javabrains.demo.dao.UserDao;
 
+@Named("userService")
 public class UserServiceImpl implements UserService{
 
+	@Inject
 	private UserDao userDao;
+	@Value("2")
 	private int numOfUsers;
 	
 	public User getUserById(int id) {
