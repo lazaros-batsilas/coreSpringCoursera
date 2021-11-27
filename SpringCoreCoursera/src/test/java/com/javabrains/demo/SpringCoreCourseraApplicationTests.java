@@ -18,12 +18,17 @@ class SpringCoreCourseraApplicationTests {
 	@BeforeEach
 	void setup() {
 		context = new ClassPathXmlApplicationContext("beans.xml");
+		service = context.getBean("userService", UserService.class);
 	}
 
 	@Test
 	void contextLoads() {
-		service = context.getBean("userService", UserService.class);
 		assertNotNull(service);
+	}
+	
+	@Test
+	void getAllUsers() {
+		service.getAllUsers().stream().forEach(user->System.out.println(user.getName()));
 	}
 
 }
