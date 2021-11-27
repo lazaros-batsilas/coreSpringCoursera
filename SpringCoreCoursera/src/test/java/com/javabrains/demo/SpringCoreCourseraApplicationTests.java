@@ -1,29 +1,32 @@
 package com.javabrains.demo;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.javabrains.demo.config.ApplicationConfig;
 import com.javabrains.demo.service.UserService;
 
 @SpringBootTest
 class SpringCoreCourseraApplicationTests {
 	
-	ClassPathXmlApplicationContext context;
+	AnnotationConfigApplicationContext context;
 	UserService service;
 	
 	@BeforeEach
 	void setup() {
-		context = new ClassPathXmlApplicationContext("beans.xml");
+		context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 		service = context.getBean("userService", UserService.class);
 	}
 
 	@Test
 	void contextLoads() {
+		User user = service.getUserById(1);
 		assertNotNull(service);
+		assertEquals(user.getName(),"dave");
 	}
 	
 	@Test
